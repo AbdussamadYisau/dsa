@@ -36,8 +36,6 @@ class Solution:
     '''
     def groupAnagramsEfficient(strs):
 
-        
-
         anagramsMap = {}
 
         for i in strs:
