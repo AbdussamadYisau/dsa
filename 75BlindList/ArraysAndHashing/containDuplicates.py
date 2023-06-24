@@ -1,4 +1,4 @@
-# Time Complexity - O(N), Space Complexity - O(N)
+# Time Complexity - O(N), Space Complexity - O(N), where N is 26 (26 characters)
 from ast import List
 
 
