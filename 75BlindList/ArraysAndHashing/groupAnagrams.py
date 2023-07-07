@@ -26,12 +26,15 @@ class Solution:
             
             anagramsMap["".join(sorted(i))] = [i] + anagramsMap.get("".join(sorted(i)), [])
 
+
         return anagramsMap.values()
     
 
     '''
         Time Complexity - O(N * M) : where N is list of strings, and M is equal to average length of the individual strings
         Space Complexity - O(N)
+
+        NB: The ord() function in Python has a constant time complexity of O(1).
     
     '''
     def groupAnagramsEfficient(strs):
@@ -44,6 +47,7 @@ class Solution:
                 count[ord(c) - ord("a")] += 1
 
             anagramsMap[tuple(count)] = [i] + anagramsMap.get(tuple(count), [])
+        
 
         return anagramsMap.values()
 
