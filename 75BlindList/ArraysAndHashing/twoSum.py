@@ -1,38 +1,58 @@
+from typing import List
+
+
+'''
+TC - O(N), SC - O(N)
+
+'''
+
 class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
 
-    # This solution is O(N^2) time complexity and O(N) space complexity
-    def twoSum(nums, target):
-        pairsMap = {}
+        hash = {}
 
-        # Put elements in pairs map
-        for i in range(len(nums)):
-
-            pairsMap[i] = nums[i]
-
-        for i in pairsMap: 
-
-            ans = target - pairsMap[i]
-
-            for key, val in pairsMap.items():
-                if ans == val and key != i:
-                    return ([i, key])
-                
-    # This solution is O(N) time complexity and O(N) space complexity
-    def twoSumEfficient(nums, target): 
-        pairsMap = {}
 
         for i in range(len(nums)):
-            ans = target - nums[i]
 
-            if ans in pairsMap:
-                return([pairsMap[ans], i])
+            complement = target - nums[i]
+
+            if complement in hash:
+
+                return([i, hash[complement]])
+
+            hash[nums[i]] = i
+
+'''
+This would only work if the array is sorted, if you test this solution with [2,7,1,11]. It would fail, i found that interesting. So you can only use two pointers / sliding window for particular scenarios. 
+
+TC - O(N) if we don't consider the sorting, SC - O(1)
+
+'''
+
+
+class Solution1:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        nums.sort() # o(logn)
+
+        i, j = 0, len(nums) - 1
+
+        while i < j:
+
+            currentSum = nums[i] + nums[j]
+            
+            if currentSum == target:
+
+                return([i,j])
+            
+            elif currentSum > target: 
+                j -= 1
+
             else: 
-                pairsMap[nums[i]] = i
-                
-    
-                
+                i += 1
 
 
 
-print(Solution.twoSumEfficient([2,7,11,15], 9))
-print(Solution.twoSumEfficient([3,3], 6))
+
+print(Solution1().twoSum([2,7, 1,5], 9))
+        

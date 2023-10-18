@@ -1,15 +1,22 @@
-# Time Complexity - O(N), Space Complexity - O(N), where N is 26 (26 characters)
-from ast import List
+from typing import List  # Import List from the typing module
 
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        duplicatesMap = {}
 
-        for i in nums: 
-            if i in duplicatesMap:
+        solutionHash = {}
+
+        for i in nums:
+
+            if i in solutionHash:
                 return True
-            else: 
-                duplicatesMap[i] = 1
-                
+            
+            else:
+                solutionHash[i] = 1
+
         return False
+
+
+print(Solution().containsDuplicate([1,2,3,4]))
+        
+       
