@@ -22,6 +22,7 @@ class Solution:
         for key, val in eleMap.items():
             freqArray.append([key]*val)
         
+        # reverse makes it sorted in descending order
         freqArray.sort(key=lambda x:len(x), reverse=True)
 
 
@@ -90,6 +91,7 @@ class Solution:
 
     '''
     def topKFrequentEfficent(nums, k):
+        # hashmap for storing items and count
         eleMap = {}
 
         # Plus 1 cause we are not going to use position 0
@@ -97,6 +99,8 @@ class Solution:
 
         for i in nums:
             eleMap[i] = 1 + eleMap.get(i, 0)
+
+
         # n is key, c is value - which is count, also what would be used to identify the position we want to append values to in freqArray
 
         for n, c in eleMap.items():
@@ -109,19 +113,15 @@ class Solution:
 
         '''
         
-        The line for i in range(len(nums) - 1, 0, -1): is a loop statement that iterates over the indices of the nums list in reverse order, excluding the first element. Here's what each part of the range function signifies:
+        range(start, stop, increment)
 
-        len(nums) - 1: It specifies the starting point of the range. Since Python uses zero-based indexing, len(nums) - 1 represents the index of the last element in the nums list.
-
-        0: It specifies the end point of the range. The 0 indicates that the loop should stop just before reaching the index 0, i.e., it iterates until the second element of the list.
-
-        -1: It specifies the step value. The -1 indicates that the loop should decrement the index by 1 in each iteration, moving from the last element towards the second element of the list.
-
-        In summary, the loop statement for i in range(len(nums) - 1, 0, -1): allows you to iterate over the elements of the nums list in reverse order, starting from the last element and moving towards the second element. The variable i takes on the values of the indices in reverse order, allowing you to access the elements of the list in that order, excluding the first element.
+        start - where it should start looping from, in our case, the end
+        stop - it should stop before the number put here, in our case, it should not get to 0
+        increment - it is 1 by default, since we are doing reverse, we need it to be -1
         
         '''
         for i in range(len(freqArray) - 1, 0 , -1):
-            print("Freq Array: {}".format(freqArray))
+            # print("Freq Array: {f}".format(f = freqArray))
             for n in freqArray[i]:
                 res.append(n)
 
@@ -133,7 +133,7 @@ class Solution:
 
     
 
-print(Solution.topKFrequentEfficent([1,1,1,2,2,3,3,3,3], 2))
+print("Solution 3 - {f}".format(f = Solution.topKFrequentEfficent([1,1,1,2,2,3,3,3,3], 2)))
 
 
 
